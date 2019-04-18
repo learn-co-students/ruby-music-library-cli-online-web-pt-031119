@@ -1,8 +1,8 @@
-require_relative '../lib/concerns/findable'
+ require_relative '../lib/concerns/findable'
 
 class Genre 
   
-  extend Findable
+ extend Concerns::Findable
   
   attr_accessor :name
   attr_reader 

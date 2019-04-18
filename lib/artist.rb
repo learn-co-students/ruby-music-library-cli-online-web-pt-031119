@@ -5,7 +5,7 @@ require_relative '../lib/concerns/findable'
 
 class Artist 
   
-  extend Findable
+  extend Concerns::Findable
   
     attr_accessor :name
     
