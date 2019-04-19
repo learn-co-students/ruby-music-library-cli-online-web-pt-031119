@@ -45,20 +45,20 @@ class MusicLibraryController
   end
 
   def list_songs
-    class_sort(Song).each_with_index do |song, i|
-      puts "#{i+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    class_sort(Song).each.with_index(1) do |song, i|
+      puts "#{i}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
   end
 
   def list_artists
-    class_sort(Artist).each_with_index do |artist, i|
-      puts "#{i+1}. #{artist.name}"
+    class_sort(Artist).each.with_index(1) do |artist, i|
+      puts "#{i}. #{artist.name}"
     end
   end
 
   def list_genres
-    class_sort(Genre).each_with_index do |genre, i|
-      puts "#{i+1}. #{genre.name}"
+    class_sort(Genre).each.with_index(1) do |genre, i|
+      puts "#{i}. #{genre.name}"
     end
   end
 
@@ -98,7 +98,7 @@ class MusicLibraryController
       puts "Playing #{song_list[i].name} by #{song_list[i].artist.name}"
     else
       nil
-  end
+    end
 
   end
 
