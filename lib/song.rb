@@ -1,5 +1,3 @@
-
-require_relative '../lib/concerns/findable'
 require 'pry'
 
 class Song 

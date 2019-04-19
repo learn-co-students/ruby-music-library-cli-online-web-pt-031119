@@ -1,6 +1,6 @@
 
 
-require_relative '../lib/concerns/findable'
+
 
 
 class Artist 
