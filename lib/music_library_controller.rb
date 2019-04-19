@@ -62,44 +62,43 @@ class MusicLibraryController
     end
   end
 
+  def sort_by_song(klass, obj_name)
+    klass.find_by_name(obj_name).songs.sort_by {|song| song.name}
+  end
+
+  def list_songs_by(klass)
+    obj_name = gets.chomp
+    self.sort_by_song(klass, obj_name) if klass.find_by_name(obj_name)
+  end
+
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
-    artist_name = gets.chomp
-    num = 0
-    if Artist.find_by_name(artist_name)
-      Artist.find_by_name(artist_name).songs.sort_by {|song|
-        song.name
-      }.each do |song|
-          num += 1
-          puts "#{num}. #{song.name} - #{song.genre.name}"
-        end
+    if self.list_songs_by(Artist)
+      self.list_songs_by(Artist).each_with_index do |song, i|
+        puts "#{i+1}. #{song.name} - #{song.genre.name}"
+      end
     end
   end
 
   def list_songs_by_genre
     puts "Please enter the name of a genre:"
-    genre_name = gets.chomp
-    num = 0
-    if Genre.find_by_name(genre_name)
-      Genre.find_by_name(genre_name).songs.sort_by {|song|
-        song.name
-      }.each do |song|
-        num += 1
-        puts "#{num}. #{song.artist.name} - #{song.name}"
+    if self.list_songs_by(Genre)
+      self.list_songs_by(Genre).each_with_index do |song, i|
+        puts "#{i+1}. #{song.artist.name} - #{song.name}"
       end
     end
   end
 
   def play_song
     puts "Which song number would you like to play?"
-    song_request = gets.chomp.to_i - 1
+    i = gets.chomp.to_i - 1
     song_list = class_sort(Song)
 
-    if (1..song_list.length).include?(song_request) && song_list[song_request]
-      puts "Playing #{song_list[song_request].name} by #{song_list[song_request].artist.name}"
+    if (0..song_list.length-1).include?(i)
+      puts "Playing #{song_list[i].name} by #{song_list[i].artist.name}"
     else
       nil
-    end
+  end
 
   end
 
