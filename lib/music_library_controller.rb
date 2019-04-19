@@ -40,27 +40,25 @@ class MusicLibraryController
 
   end
 
+  def class_sort(klass)
+    klass.all.sort_by{|obj| obj.name}
+  end
+
   def list_songs
-    num = 0
-    Song.all.sort_by {|song| song.name}.each do |song|
-      num += 1
-      puts "#{num}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    class_sort(Song).each_with_index do |song, i|
+      puts "#{i+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
   end
 
   def list_artists
-    num = 0
-    Artist.all.sort_by {|artist| artist.name}.each do |artist|
-      num += 1
-      puts "#{num}. #{artist.name}"
+    class_sort(Artist).each_with_index do |artist, i|
+      puts "#{i+1}. #{artist.name}"
     end
   end
 
   def list_genres
-    num = 0
-    Genre.all.sort_by {|genre| genre.name}.each do |genre|
-      num += 1
-      puts "#{num}. #{genre.name}"
+    class_sort(Genre).each_with_index do |genre, i|
+      puts "#{i+1}. #{genre.name}"
     end
   end
 
@@ -95,8 +93,9 @@ class MusicLibraryController
   def play_song
     puts "Which song number would you like to play?"
     song_request = gets.chomp.to_i - 1
-    song_list = Song.all.sort_by {|song| song.name}
-    if song_request >= 0 && song_request <= song_list.length && song_list[song_request]
+    song_list = class_sort(Song)
+
+    if (1..song_list.length).include?(song_request) && song_list[song_request]
       puts "Playing #{song_list[song_request].name} by #{song_list[song_request].artist.name}"
     else
       nil
