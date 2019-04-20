@@ -29,8 +29,6 @@ class Artist
     if song.artist == nil
       song.artist = self
       @songs << song
-    #else
-    #  nil
     end
   end
 end
