@@ -32,11 +32,11 @@ class Genre
   end
 
   def self.destroy_all
-    self.all.clear
+    all.clear
   end
 
   def self.create(name)
-    genre = self.new(name)
+    genre = new(name)
     genre.save
     genre
   end
