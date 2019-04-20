@@ -62,29 +62,29 @@ class MusicLibraryController
     end
   end
 
-  def sort_by_song(klass, obj_name)
+  def sort_list(klass, obj_name)
     klass.find_by_name(obj_name).songs.sort_by {|song| song.name}
   end
 
-  def list_songs_by(klass)
+  def get_list(klass)
     obj_name = gets.chomp
-    self.sort_by_song(klass, obj_name) if klass.find_by_name(obj_name)
+    self.sort_list(klass, obj_name) if klass.find_by_name(obj_name)
   end
 
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
-    if self.list_songs_by(Artist)
-      self.list_songs_by(Artist).each_with_index do |song, i|
-        puts "#{i+1}. #{song.name} - #{song.genre.name}"
+    if self.get_list(Artist)
+      self.get_list(Artist).each.with_index(1) do |song, i|
+        puts "#{i}. #{song.name} - #{song.genre.name}"
       end
     end
   end
 
   def list_songs_by_genre
     puts "Please enter the name of a genre:"
-    if self.list_songs_by(Genre)
-      self.list_songs_by(Genre).each_with_index do |song, i|
-        puts "#{i+1}. #{song.artist.name} - #{song.name}"
+    if self.get_list(Genre)
+      self.get_list(Genre).each.with_index(1) do |song, i|
+        puts "#{i}. #{song.artist.name} - #{song.name}"
       end
     end
   end

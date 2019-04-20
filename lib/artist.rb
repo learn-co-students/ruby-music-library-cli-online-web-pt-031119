@@ -32,11 +32,11 @@ class Artist
   end
 
   def self.destroy_all
-    all.clear
+    self.all.clear
   end
 
   def self.create(name)
-    artist = new(name)
+    artist = self.new(name)
     artist.save
     artist
   end
