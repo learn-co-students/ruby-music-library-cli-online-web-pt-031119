@@ -1,6 +1,8 @@
 class Artist
   attr_accessor :name, :songs
+
   @@all = []
+
 
   def initialize(name)
     @name = name
@@ -29,7 +31,13 @@ class Artist
     if song.artist == nil
       song.artist = self
       @songs << song
-    
     end
   end
+
+  def genres
+    song = Song.all.select {|s| s.artist == self}
+    song.map {|b| b.genre}
+    #binding.pry
+  end
+
 end
