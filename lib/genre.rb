@@ -4,6 +4,7 @@ class Genre
   attr_reader :songs
   
   extend Concerns::ClassMethods
+  extend Concerns::Findable
   include Concerns::InstanceMethods
   
   @@all = []
@@ -15,6 +16,12 @@ class Genre
   
   def self.all 
     @@all 
+  end
+  
+  def artists
+    @songs.collect do |song|
+      song.artist
+    end.uniq
   end
   
 end

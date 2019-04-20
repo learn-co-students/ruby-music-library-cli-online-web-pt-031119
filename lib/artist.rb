@@ -6,6 +6,7 @@ class Artist
   attr_reader :songs
   
   extend Concerns::ClassMethods
+  extend Concerns::Findable
   include Concerns::InstanceMethods
   
   @@all = []
@@ -20,21 +21,17 @@ class Artist
   end
 
   def add_song (song)
-    if song.artist == nil 
-    song.artist = self
-    end
+    song.artist = self unless song.artist == self
     if !@songs.include?(song)
     @songs << song
     end
   end
   
   def genres
-    Song.all.collect do |song|
-     if song.artist == self
-       binding.pry
-       song.genre
-     end
-    end
+    @songs.collect do |song| 
+      song.genre
+     end.uniq
   end
+
 
 end
