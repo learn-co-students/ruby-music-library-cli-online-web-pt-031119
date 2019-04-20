@@ -24,11 +24,7 @@
   end
   
   def list_songs
-   tracks = Dir.entries('./spec/fixtures/mp3s').delete_if do|track|
-      track == "." || track == ".."
-    end
-   tracks.each_with_index do |song, index|
-     puts "#{index + 1}. #{song.delete".mp3"}"
-   end
+   Song.all
+   binding.pry
   end
 end
