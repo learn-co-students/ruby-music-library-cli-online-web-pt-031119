@@ -1,6 +1,8 @@
-class Artist
-  #extend Concerns::Findable
+require_relative './concerns/findable.rb'
 
+class Artist
+  extend Concerns::Findable
+ 
   attr_accessor :name
   attr_reader :songs
 
@@ -30,9 +32,6 @@ class Artist
   end
 
   def add_song(song)
-    #song.artist = self unless song.artist
-    #songs << song unless song.include?(song)
-    #song
     if song.artist == nil
       song.artist = self
       self.songs << song unless self.songs.include?(song)
@@ -42,10 +41,6 @@ class Artist
   end
 
   def genres
-    #song = Song.all.select {|s| s.artist == self}
-    #song.map {|s| s.genre}.uniq
     self.songs.map {|song| song.genre}.uniq
-    #binding.pry
   end
-
 end
