@@ -28,10 +28,7 @@ class Genre
   end
 
   def artists
-    #song = Song.all.select {|s| s.genre == self}
-    #song.map {|s| s.artist}.uniq
     self.songs.map {|song| song.artist}.uniq
-    binding.pry
   end
 
   def add_song(song)
