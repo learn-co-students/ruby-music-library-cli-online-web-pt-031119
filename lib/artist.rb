@@ -1,5 +1,6 @@
 class Artist
-  attr_accessor :name, :songs
+  attr_accessor :name
+  attr_reader :songs
 
   @@all = []
 
@@ -14,11 +15,11 @@ class Artist
   end
 
   def save
-    @@all << self
+    self.class.all << self
   end
 
   def self.destroy_all
-    @@all.clear
+    self.all.clear
   end
 
   def self.create(name)
@@ -36,7 +37,8 @@ class Artist
 
   def genres
     song = Song.all.select {|s| s.artist == self}
-    song.map {|b| b.genre}
+    song.map {|s| s.genre}.uniq
+    #self.songs.map {|b| b.genre}.uniq
     #binding.pry
   end
 

@@ -1,5 +1,6 @@
 class Genre
-  attr_accessor :name, :songs
+  attr_accessor :name
+  attr_reader :songs
   @@all = []
 
   def initialize(name)
@@ -16,13 +17,25 @@ class Genre
   end
 
   def self.destroy_all
-    @@all.clear
+    self.all.clear
   end
 
   def self.create(name)
     new_genre = Genre.new(name)
     new_genre.save
     new_genre
+  end
+
+  def artists
+    song = Song.all.select {|s| s.genre == self}
+    song.map {|s| s.artist}.uniq
+  end
+
+  def add_song(song)
+    if song.genre == nil
+      song.genre = self
+      @songs << song
+    end
   end
 
 end
