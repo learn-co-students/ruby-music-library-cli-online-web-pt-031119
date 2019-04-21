@@ -10,7 +10,7 @@ class MusicImporter
   end
   
   def files 
-    Dir.entries('./spec/fixtures/mp3s').delete_if do |track|
+    Dir.entries(@path).delete_if do |track|
       track == "." || track == ".."
     end
     
