@@ -19,10 +19,24 @@
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
     answer = gets.chomp
+    if answer == 'list songs'
+      list_songs 
+    elsif answer == 'list artists'
+      list_artists
+    elsif answer == 'list genres' 
+      list_genres
+    elsif answer == 'list artist'
+      list_songs_by_artist
+    elsif answer == 'list genre' 
+      list_songs_by_genre
+    elsif answer == 'play song'
+      play_song
+    else
     while answer != "exit"
      puts "What would you like to do?"
      answer = gets.chomp 
     end
+  end
   end
   
   def list_songs
@@ -82,15 +96,12 @@
   
   def play_song
     puts "Which song number would you like to play?"
-    list = list_songs
+    list = Song.all.sort do |x,y|
+     x.name <=> y.name
+   end
     answer = gets.chomp
-    while answer.to_i > Song.all.uniq.size
-     puts "Which song number would you like to play?"
-     answer = gets.chomp
-    end
-    list.each_with_index do |song, index|
-    puts "Playing #{song.name} by #{song.artist.name}" unless index + 1 != answer.to_i
-    binding.pry
+    list.uniq.each_with_index do |song, index|
+    puts "Playing #{song.name} by #{song.artist.name}" if index + 1 == answer.to_i
     end
     end
 end
