@@ -4,7 +4,6 @@ class Artist
 
   @@all = []
 
-
   def initialize(name)
     @name = name
     @songs = []
@@ -29,16 +28,21 @@ class Artist
   end
 
   def add_song(song)
+    #song.artist = self unless song.artist
+    #songs << song unless song.include?(song)
+    #song
     if song.artist == nil
       song.artist = self
-      @songs << song
+      self.songs << song unless self.songs.include?(song)
+    else
+      self.songs << song unless self.songs.include?(song)
     end
   end
 
   def genres
-    song = Song.all.select {|s| s.artist == self}
-    song.map {|s| s.genre}.uniq
-    #self.songs.map {|b| b.genre}.uniq
+    #song = Song.all.select {|s| s.artist == self}
+    #song.map {|s| s.genre}.uniq
+    self.songs.map {|song| song.genre}.uniq
     #binding.pry
   end
 
