@@ -1,7 +1,7 @@
 #require_relative "../config/environment.rb"
 
 #module Concerns
-    module Findable 
+    module Concerns::Findable 
 
         module ClassMethods
 
