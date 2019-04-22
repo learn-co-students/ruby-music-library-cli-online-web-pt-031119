@@ -3,7 +3,7 @@ require 'pry'
 
 class Genre 
 
-    extend Findable::ClassMethods  
+    extend Concerns::Findable  
 
     attr_accessor :genre, :song, :artist
     attr_reader :name 

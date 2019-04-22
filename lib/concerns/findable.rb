@@ -3,7 +3,7 @@
 #module Concerns
     module Concerns::Findable 
 
-        module ClassMethods
+        #module ClassMethods
 
             def find_by_name(name)
                 self.all.detect {|song| song.name == name}
@@ -13,5 +13,5 @@
                 self.find_by_name(name) ? self.find_by_name(name) : self.create(name)
             end
         end 
-    end     
+    #end     
 #end 
