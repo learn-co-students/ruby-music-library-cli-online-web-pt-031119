@@ -1,6 +1,9 @@
+require_relative "../lib/concerns/findable.rb" 
 require 'pry'
 
 class Genre 
+
+    extend Concerns::Findable 
 
     attr_accessor :genre, :song, :artist
     attr_reader :name 
