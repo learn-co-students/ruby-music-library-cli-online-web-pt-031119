@@ -1,6 +1,8 @@
 require 'pry'
 
-class Song 
+class Song
+    
+    extend Concerns::Findable 
 
     attr_accessor :song, :artist, :genre 
     attr_reader :name
