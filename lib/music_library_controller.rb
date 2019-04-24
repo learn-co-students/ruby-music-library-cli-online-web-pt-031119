@@ -1,3 +1,5 @@
+require 'pry'
+
 class MusicLibraryController
 
     attr_accessor :path 
@@ -8,6 +10,11 @@ class MusicLibraryController
         music_importer.import  
     end
 
+    def list_songs
+        Song.all
+        binding.pry 
+    end 
+
     def call
         puts "Welcome to your music library!"
         puts "To list all of your songs, enter 'list songs'."
@@ -17,17 +24,20 @@ class MusicLibraryController
         puts "To list all of the songs of a particular genre, enter 'list genre'."
         puts "To play a song, enter 'play song'."
         puts "To quit, type 'exit'."
-        puts "What would you like to do?"
+        #puts "What would you like to do?"
 
-        input = gets.strip.chomp
+        input = "" 
 
         while input != "exit"
-             
+
+            puts "What would you like to do?"
+
+            input = gets.chomp 
 
             case input
 
             when "list songs"
-                list songs
+                self.list_songs
             when "list artists"
                 list artists 
             when "list genres"
@@ -38,10 +48,11 @@ class MusicLibraryController
                 list genre 
             when "play song"
                 play song 
-            when "exit"
-                return exit 
-            end
-             
+            
+           
+            end  
+
+
         end 
     end 
     
@@ -52,3 +63,7 @@ end
 
 
 
+    # else
+    #     puts "What would you like to do?"
+
+    # end
