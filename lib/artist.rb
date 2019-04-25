@@ -1,3 +1,4 @@
+require 'pry'
 class Artist 
   attr_accessor :name, :songs
   @@all = []
@@ -23,6 +24,11 @@ class Artist
     created_artist = Artist.new(artist)
     created_artist.save
     created_artist
+  end
+  
+  def add_song(song)
+  song.artist = self unless song.artist
+  songs << song unless songs.include?(song)
   end
   
   
