@@ -48,7 +48,15 @@ class MusicLibraryController
     def list_songs_by_artist
       puts "Please enter the name of an artist:"
       input = gets.chomp
+      #use input to identify artist
+      #prints all songs by said artist in a numbered list (alphabetized by song name) < using #list_songs
+
+        #Please enter the name of an artist:")
+        #puts "#{i}. #{song.name} - #{song.genre}"
+        #1. Green Aisles - country")
+        #2. It's Real - hip-hop")
+        #3. Wonder Years - dream pop")
 
    end
-    
+
 end
