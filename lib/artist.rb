@@ -25,4 +25,5 @@ class Artist
     created_artist
   end
   
+  
 end
