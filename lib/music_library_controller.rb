@@ -53,18 +53,15 @@ class MusicLibraryController
 
     def list_songs_by_artist
       puts "Please enter the name of an artist:"
-      artist = gets.chomp
-      songs = songs_by_artist(input)
-
-
-#need to know the artist
-
+      singer = gets.chomp #<need to know the artist
+      the_singer = get_artist(singer)
 #get list of artist's songs through Song class
-
+      the_singer.songs.sort
+      binding.pry
 #print said songs out alphabetically by song name, adding in the genre
 
 #  puts "#{i}. #{song.name} - #{song.genre}" < this format
-      end
+
    end
 
 end
