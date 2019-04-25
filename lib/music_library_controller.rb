@@ -81,8 +81,7 @@ class MusicLibraryController
       #binding.pry
       #if input == >= 1 && input == <= list_songs.size #ensures input is valid
         #w/ valid input, selects song accordingly...we need to iterate over Song.name to find the song
-
-#prompts the user to choose a song from the alphabetized list output by #list_songs
+        
 #accepts user input which will point to a number
 #upon receiving valid input 'plays' the matching song from the alphabetized list output by #list_songs
 #to receive(:puts).with("Which song number would you like to play?")
