@@ -82,7 +82,7 @@ describe "MusicLibraryController - CLI Methods" do
 
       music_library_controller.list_songs_by_artist
     end
-
+ 
     it "prints all songs by a particular artist in a numbered list (alphabetized by song name)" do
       Song.create_from_filename("Real Estate - Wonder Years - dream pop.mp3")
 
