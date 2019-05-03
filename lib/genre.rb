@@ -1,7 +1,9 @@
+require_relative "./concerns/findable.rb"
 require 'pry'
 class Genre
   attr_accessor :song, :artist
   attr_reader :name
+  extend Concerns::Findable
   @@all = []
 
   def initialize(name)
